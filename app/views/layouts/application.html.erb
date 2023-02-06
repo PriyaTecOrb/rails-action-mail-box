@@ -8,9 +8,22 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style type="text/css">
+      body{
+        background: linear-gradient(to right, #c04848, #480048);
+        min-height: 100vh
+      }
+      .text-gray{color: #aaa}
+      img{
+        height: 170px;width: 140px
+      }
+  
+</style>
   </head>
 
   <body>
+
     <%= yield %>
   </body>
 </html>
