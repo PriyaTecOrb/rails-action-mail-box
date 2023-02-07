@@ -41,7 +41,7 @@
         </ul> <!-- End -->
       </div>
     </div>
-  <%else%>
+  <%else%>  
     <div class="empty-state">
       <div class="empty-state__content">
         <div class="empty-state__icon">
@@ -49,8 +49,9 @@
         </div>
         <div class="empty-state__message">No records has been added yet.</div>
         <div class="empty-state__help">
-          Add a new record by simpley clicking the button on top right side.
+          Add a new record by simpley clicking the below button 
         </div>
+        <%= link_to "New product", new_product_path , class:"btn btn-info", style:'float:right;margin-top:15px;' %>
       </div>
     </div>
   <%end%>  
