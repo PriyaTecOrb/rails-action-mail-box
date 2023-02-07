@@ -3,7 +3,8 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks or /feedbacks.json
   def index
-    @feedbacks = Feedback.all
+    @product = Product.find_by_id(params[:product_id])
+    @feedbacks = Feedback.all.order(updated_at: :DESC)
   end
 
   # GET /feedbacks/1 or /feedbacks/1.json
@@ -12,11 +13,17 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks/new
   def new
+    @user = current_user
+    @product = Product.find_by_id(params[:product_id])
     @feedback = Feedback.new
+    # FeedbackMailer.deliver_now
   end
 
   # GET /feedbacks/1/edit
   def edit
+    @user = current_user
+    @feedback =  Feedback.find_by_id(params[:id])
+    @product = Product.find_by_id(params[:product_id])
   end
 
   # POST /feedbacks or /feedbacks.json
@@ -25,7 +32,7 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to feedback_url(@feedback), notice: "Feedback was successfully created." }
+        format.html { redirect_to product_feedbacks_url(@feedback.product_id), notice: "Feedback was successfully created." }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +45,7 @@ class FeedbacksController < ApplicationController
   def update
     respond_to do |format|
       if @feedback.update(feedback_params)
-        format.html { redirect_to feedback_url(@feedback), notice: "Feedback was successfully updated." }
+        format.html { redirect_to product_feedbacks_url(@feedback.product_id), notice: "Feedback was successfully updated." }
         format.json { render :show, status: :ok, location: @feedback }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +59,7 @@ class FeedbacksController < ApplicationController
     @feedback.destroy
 
     respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: "Feedback was successfully destroyed." }
+      format.html { redirect_to product_feedbacks_url(params[:product_id]), notice: "Feedback was successfully destroyed." }
       format.json { head :no_content }
     end
   end

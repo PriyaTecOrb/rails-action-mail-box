@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-
+  devise_scope :user do
+  root to: "devise/sessions#new"
+end
   resources :products do
     resources :feedbacks
   end

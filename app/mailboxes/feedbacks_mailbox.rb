@@ -1,6 +1,8 @@
-class RepliesMailbox < ApplicationMailbox
+class FeedbacksMailbox < ApplicationMailbox
   # mail = Mail.new
   RECIPIENT_FORMAT = /feedback\-(.+)@example.com/i
+
+  
 
   before_processing :user
   def process
@@ -28,6 +30,6 @@ class RepliesMailbox < ApplicationMailbox
     # Returns the first_match and that is product_id
     # For Ex: recipient = "feedback-1234@example.com"
     # Then it'll return 1234
-    # recipient[RECIPIENT_FORMAT, 1]
+    recipient[RECIPIENT_FORMAT, 1]
   end
 end

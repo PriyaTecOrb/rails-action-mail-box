@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
   # POST /products or /products.json
   def create
     @product = Product.new(product_params)
-
+    # FeedbackMailer.send_email(current_user.email).deliver_now
     respond_to do |format|
       if @product.save
         format.html { redirect_to products_url(), notice: "Product was successfully created." }

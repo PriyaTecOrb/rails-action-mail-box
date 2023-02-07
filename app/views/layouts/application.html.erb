@@ -23,6 +23,31 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <%if current_user.present?%>
+        <div class="collapse navbar-collapse" width="100%" id="navbarNav">
+          <ul class="navbar-nav" style="height: 4rem;">
+            <li class="nav-item">
+                <a class="nav-link p-3" href="<%=products_path()%>">Products</a>
+            </li>
+          </ul>
+        </div>
+        <%= link_to "Sign out", destroy_user_session_path, :method => :delete,class:"nav-item mr-3 nav-link p-3" %>
+      <%else%>  
+        <div class="collapse navbar-collapse" width="100%" id="navbarNav">
+          <ul class="navbar-nav" style="height: 4rem;">
+            <li class="nav-item">
+                <a class="nav-link p-3" href="#"></a>
+            </li>
+          </ul>
+        </div>
+        <%= link_to "Sign up", new_user_registration_path, class:"nav-item mr-3 nav-link p-3" %>
+        <%= link_to "Sign In", new_user_session_path, class:"nav-item mr-3 nav-link p-3" %>
+      <%end%>  
+    </nav>
 
     <%= yield %>
   </body>

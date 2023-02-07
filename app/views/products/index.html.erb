@@ -1,17 +1,8 @@
-<!-- <div id="products">
-  <%# @products.each do |product| %>
-    <%#= render product %>
-    <p>
-      <%#= link_to "Show this product", product %>
-    </p>
-  <%# end %>
-</div>
- -->
 <br>
 <div class="container">
   <div class="row text-white mb-2">
     <div class="col-lg-7"><h3 class="display-4">Products</h3> </div>
-    <div class="col-lg-5 pull-right"><%= link_to "New product", new_product_path , class:"btn btn-info"%></div>
+    <div class="col-lg-5"><%= link_to "New product", new_product_path , class:"btn btn-info"%></div>
   </div>
   <div class="row">
     <div class="col-lg-12 mx-auto">
@@ -37,7 +28,8 @@
                 </div>
                 <div class="btn-group">
                   <%= link_to "Edit this product", edit_product_path(product) , :class=>"btn btn-primary btn-sm"%>&nbsp;
-                  <%= button_to "Destroy this product", @product, method: :delete , :class=>"btn btn-success btn-sm"%>
+                  <%= button_to "Delete", product, method: :delete , :class=>"btn btn-success btn-sm"%>&nbsp;
+                  <%= link_to "All Feedbacks", product_feedbacks_path(product), :class=>"btn btn-info btn-sm"%>
                 </div>
               </div>
               <img src="https://i.imgur.com/KFojDGa.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">

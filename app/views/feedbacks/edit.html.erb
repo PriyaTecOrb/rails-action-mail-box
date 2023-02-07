@@ -1,10 +1,12 @@
-<h1>Editing feedback</h1>
-
-<%= render "form", feedback: @feedback %>
-
-<br>
+<div class="container">  
+  <br>
+  <div class="row text-white">
+    <div class="col-lg-7"><h3 class="display-6">Edit Feedback</h3> </div>
+  </div>
+  <br>
+  <%= render "form", feedback: @feedback %>
 
 <div>
-  <%= link_to "Show this feedback", @feedback %> |
-  <%= link_to "Back to feedbacks", feedbacks_path %>
+  <%#= link_to "Back to feedbacks", product_feedbacks_path(@product.id) %>
 </div>
+</div>  
