@@ -1,0 +1,36 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="panel panel-default">
+    <div>
+      <%= form.label :title, style: "display: block",class: "text-white mb-2" %>
+      <%= form.text_field :title , class: "form-control mb-4",:required => true%>
+    </div>
+
+    <div>
+      <%= form.label :Description, style: "display: block",class: "text-white mb-2" %>
+      <%= form.text_field :description , class: "form-control mb-4",:required => true%>
+    </div>
+
+    <div>
+      <%= form.label :Price, style: "display: block" ,class: "text-white mb-2"%>
+      <%= form.number_field :price , class: "form-control mb-4",:required => true%>
+    </div>
+
+
+    <div>
+      <%= form.submit 'Save', :class => 'btn btn-success' %>
+    </div>
+  </div>  
+
+<% end %>

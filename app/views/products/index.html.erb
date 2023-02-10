@@ -1,0 +1,58 @@
+<br>
+<link rel="stylesheet" href="/assets/product.css">
+<div class="container">
+  <%if @products.count > 0%>
+    <div class="row text-white mb-2">
+      <div class="col-lg-7"><h3 class="display-4">Products</h3> </div>
+      <div class="col-lg-5"><%= link_to "New product", new_product_path , class:"btn btn-info", style:'float:right;margin-top:15px;' %></div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 mx-auto">
+        <!-- List group-->
+        <ul class="list-group shadow">
+          <!-- list group item-->
+          <% @products.each do |product| %>
+            <li class="list-group-item">
+              <!-- Custom content-->
+              <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                <div class="media-body order-2 order-lg-1">
+                  <h5 class="mt-0 font-weight-bold mb-2"><%=product.title%></h5>
+                  <p class="font-italic text-muted mb-0 small"><%=product.description%></p>
+                  <div class="d-flex align-items-center justify-content-between mt-1">
+                    <h6 class="font-weight-bold my-2"><%=product.price%></h6>
+                    <ul class="list-inline small">
+                      <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                      <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                      <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                      <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                      <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
+                    </ul>
+                  </div>
+                  <div class="btn-group">
+                    <%= link_to "Edit this product", edit_product_path(product) , :class=>"btn btn-primary btn-sm"%>&nbsp;
+                    <%= button_to "Delete", product, method: :delete , :class=>"btn btn-success btn-sm"%>&nbsp;
+                    <%= link_to "All Feedbacks", product_feedbacks_path(product), :class=>"btn btn-info btn-sm"%>
+                  </div>
+                </div>
+                <img src="https://i.imgur.com/KFojDGa.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+              </div> <!-- End -->
+            </li> <!-- End -->
+          <%end%>
+        </ul> <!-- End -->
+      </div>
+    </div>
+  <%else%>  
+    <div class="empty-state">
+      <div class="empty-state__content">
+        <div class="empty-state__icon">
+          <img src="assets/no_record.png" alt="">
+        </div>
+        <div class="empty-state__message">No records has been added yet.</div>
+        <div class="empty-state__help">
+          Add a new record by simpley clicking the below button 
+        </div>
+        <%= link_to "New product", new_product_path , class:"btn btn-info", style:'float:right;margin-top:15px;' %>
+      </div>
+    </div>
+  <%end%>  
+</div>
